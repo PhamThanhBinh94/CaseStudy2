@@ -21,18 +21,76 @@ public class ProductManager {
         System.out.println(products);
     }
 
-    public static void editProduct(ArrayList<Product> products){
-        boolean isExist = true;
+    public static void editProductByName(ArrayList<Product> products){
+        boolean isExist =false;
+        Scanner scanner2 = new Scanner(System.in);
+        System.out.println("Please enter name that you want to search: ");
+        String name2 = scanner2.nextLine();
+        for (int i=0; i < products.size(); i++){
+            if (name2.equals(products.get(i).getName())){
+                isExist = true;
+                System.out.println("Please enter new name: ");
+                String name = scanner2.nextLine();
+                products.get(i).setName(name);
+                System.out.println(products);
+            }
+        }
+        if (!isExist){
+            System.out.println("Please enter again!!!");
+        }
+    }
+    public static void editProductById(ArrayList<Product> products){
+        boolean isExist =false;
         Scanner scanner2 = new Scanner(System.in);
         System.out.println("Please enter id that you want to search: ");
         String id2 = scanner2.nextLine();
-        for (int i=0; i < products.size() && isExist; i++){
+        for (int i=0; i < products.size(); i++){
             if (id2.equals(products.get(i).getId())){
+                isExist = true;
                 System.out.println("Please enter new id: ");
                 String id = scanner2.nextLine();
                 products.get(i).setId(id);
                 System.out.println(products);
             }
+        }
+        if (!isExist){
+            System.out.println("Please enter again!!!");
+        }
+    }
+    public static void editProductByPrice(ArrayList<Product> products){
+        boolean isExist =false;
+        Scanner scanner2 = new Scanner(System.in);
+        System.out.println("Please enter price that you want to search: ");
+        Double price2 = scanner2.nextDouble();
+        for (int i=0; i < products.size(); i++){
+            if (price2 == products.get(i).getPrice()){
+                isExist = true;
+                System.out.println("Please enter new price: ");
+                Double price = scanner2.nextDouble();
+                products.get(i).setPrice(price);
+                System.out.println(products);
+            }
+        }
+        if (!isExist){
+            System.out.println("Please enter again!!!");
+        }
+    }
+    public static void editProductByBrand(ArrayList<Product> products){
+        boolean isExist =false;
+        Scanner scanner2 = new Scanner(System.in);
+        System.out.println("Please enter brand that you want to search: ");
+        String brand2 = scanner2.nextLine();
+        for (int i=0; i < products.size(); i++){
+            if (brand2.equals(products.get(i).getBrand())){
+                isExist = true;
+                System.out.println("Please enter new brand: ");
+                String brand = scanner2.nextLine();
+                products.get(i).setBrand(brand);
+                System.out.println(products);
+            }
+        }
+        if (!isExist){
+            System.out.println("Please enter again!!!");
         }
     }
 
