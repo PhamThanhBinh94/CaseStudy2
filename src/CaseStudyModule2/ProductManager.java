@@ -9,9 +9,18 @@ import java.util.Comparator;
 import java.util.Scanner;
 
 public class ProductManager {
+//    private ArrayList<Product> products;
+
     public ProductManager() {
 
     }
+
+    public void displayProducts(ArrayList<Product> products) {
+        for(Product product: products)
+//            product.display();
+            System.out.println(product);
+    }
+
     public static void sortByName(ArrayList<Product> products) {
         Collections.sort(products, new Comparator<Product>() {
             @Override
@@ -19,7 +28,7 @@ public class ProductManager {
                 return (o1.getName().compareTo(o2.getName()));
             }
         });
-        System.out.println(products);
+//        System.out.println(products);
     }
     public static void sortPriceFromLowToHigh(ArrayList<Product> products) {
         Collections.sort(products, new Comparator<Product>() {
@@ -32,7 +41,7 @@ public class ProductManager {
                 return -1;
             }
         });
-        System.out.println(products);
+//        System.out.println(products);
     }
     public static void sortPriceFromHighToLow(ArrayList<Product> products) {
         Collections.sort(products, new Comparator<Product>() {
@@ -45,7 +54,7 @@ public class ProductManager {
                 return 1;
             }
         });
-        System.out.println(products);
+//        System.out.println(products);
     }
     public static void editProductByName(ArrayList<Product> products){
         boolean isExist =false;
