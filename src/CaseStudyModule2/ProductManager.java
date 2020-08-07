@@ -2,14 +2,16 @@ package CaseStudyModule2;
 
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
 
 public class ProductManager {
+    public ProductManager() {
 
-
+    }
 
     public static void sortByName(ArrayList<Product> products) {
         Collections.sort(products, new Comparator<Product>() {
@@ -163,4 +165,22 @@ public class ProductManager {
         products.add(product);
         System.out.println(products);
     }
+
+    public void writeProductList(ArrayList<Product> products) {
+        ReadWriteFile readWriteFile = new ReadWriteFile();
+        try {
+            readWriteFile.writeObjectFile("C:\\Users\\LENOVO\\IdeaProjects\\Case2\\src\\File\\Product.txt",products);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void readProductList(ArrayList<Product> products) {
+        ReadWriteFile readWriteFile = new ReadWriteFile();
+        try {
+            readWriteFile.readObjectFile("C:\\Users\\LENOVO\\IdeaProjects\\Case2\\src\\File\\Product.txt");
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
