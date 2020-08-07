@@ -35,6 +35,7 @@ public class Main {
                         System.out.println("2. Edit products by id");
                         System.out.println("3. Edit products by price");
                         System.out.println("4. Edit products by brand");
+                        System.out.println("0. Back to options");
                         System.out.println("Enter your choice");
                         choice2 = input2.nextInt();
 
@@ -51,12 +52,11 @@ public class Main {
                             case 4:
                                 productManager.editProductByBrand(products);
                                 break;
-                            case 0:
-                                System.exit(0);
                             default:
                                 System.out.println("No choice!");
                         }
                     }
+                    break;
                 case 3:
                     productManager.deleteProduct(products);
                     break;
@@ -71,6 +71,7 @@ public class Main {
                         System.out.println("1. Sort by price from high to low");
                         System.out.println("2. Sort by price from low to high");
                         System.out.println("3. Sort by name");
+                        System.out.println("0. Back to options");
                         System.out.println("Enter your choice");
                         choice5 = input5.nextInt();
 
@@ -93,6 +94,10 @@ public class Main {
                 case 6:
                     productManager.writeProductList(products);
                     productManager.readProductList(products);
+                case 0:
+                    System.exit(0);
+                default:
+                    System.out.println("No choice!");
             }
         }
     }
