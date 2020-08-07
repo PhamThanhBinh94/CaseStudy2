@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         ProductManager productManager = new ProductManager();
+        CrawlData crawlData = new CrawlData();
         ArrayList<Product> products = new ArrayList<>();
 
         int choice = -1;
@@ -16,8 +17,9 @@ public class Main {
             System.out.println("2. Edit products");
             System.out.println("3. Delete products");
             System.out.println("4. Search products");
-            System.out.println("5. Sort products");
-            System.out.println("6. Save products in file");
+            System.out.println("5. Display products");
+            System.out.println("6. Save products to file");
+            System.out.println("7. Load products from file");
             System.out.println("0. Exit");
             System.out.println("Enter your choice");
             choice = input.nextInt();
@@ -93,7 +95,10 @@ public class Main {
                     }
                 case 6:
                     productManager.writeProductList(products);
-                    productManager.readProductList(products);
+                    break;
+                case 7:
+                    products = productManager.readProductList("C:\\Users\\LENOVO\\IdeaProjects\\Case2\\src\\File\\Product.txt");
+                    break;
                 case 0:
                     System.exit(0);
                 default:

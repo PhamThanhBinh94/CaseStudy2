@@ -12,7 +12,6 @@ public class ProductManager {
     public ProductManager() {
 
     }
-
     public static void sortByName(ArrayList<Product> products) {
         Collections.sort(products, new Comparator<Product>() {
             @Override
@@ -22,7 +21,32 @@ public class ProductManager {
         });
         System.out.println(products);
     }
-
+    public static void sortPriceFromLowToHigh(ArrayList<Product> products) {
+        Collections.sort(products, new Comparator<Product>() {
+            @Override
+            public int compare(Product o1, Product o2) {
+                if (o1.getPrice() > o2.getPrice())
+                    return 1;
+                if (o1.getPrice() == o2.getPrice())
+                    return 0;
+                return -1;
+            }
+        });
+        System.out.println(products);
+    }
+    public static void sortPriceFromHighToLow(ArrayList<Product> products) {
+        Collections.sort(products, new Comparator<Product>() {
+            @Override
+            public int compare(Product o1, Product o2) {
+                if (o1.getPrice() > o2.getPrice())
+                    return -1;
+                if (o1.getPrice() == o2.getPrice())
+                    return 0;
+                return 1;
+            }
+        });
+        System.out.println(products);
+    }
     public static void editProductByName(ArrayList<Product> products){
         boolean isExist =false;
         Scanner scanner2 = new Scanner(System.in);
@@ -96,34 +120,6 @@ public class ProductManager {
         }
     }
 
-    public static void sortPriceFromLowToHigh(ArrayList<Product> products) {
-        Collections.sort(products, new Comparator<Product>() {
-            @Override
-            public int compare(Product o1, Product o2) {
-                if (o1.getPrice() > o2.getPrice())
-                    return 1;
-                if (o1.getPrice() == o2.getPrice())
-                    return 0;
-                return -1;
-            }
-        });
-        System.out.println(products);
-    }
-
-    public static void sortPriceFromHighToLow(ArrayList<Product> products) {
-        Collections.sort(products, new Comparator<Product>() {
-            @Override
-            public int compare(Product o1, Product o2) {
-                if (o1.getPrice() > o2.getPrice())
-                    return -1;
-                if (o1.getPrice() == o2.getPrice())
-                    return 0;
-                return 1;
-            }
-        });
-        System.out.println(products);
-    }
-
     public static void searchProduct(ArrayList<Product> products) {
         Scanner scanner4 = new Scanner(System.in);
         System.out.println("Please enter name that you want to search: ");
@@ -134,7 +130,6 @@ public class ProductManager {
             }
         }
     }
-
     public static void deleteProduct(ArrayList<Product> products) {
         Scanner scanner3 = new Scanner(System.in);
         System.out.println("Please enter id that you want to search: ");
@@ -146,7 +141,6 @@ public class ProductManager {
         }
         System.out.println(products);
     }
-
     public void addProduct(ArrayList<Product> products) {
         Product product = new Product();
         Scanner scanner1 = new Scanner(System.in);
@@ -165,7 +159,6 @@ public class ProductManager {
         products.add(product);
         System.out.println(products);
     }
-
     public void writeProductList(ArrayList<Product> products) {
         ReadWriteFile readWriteFile = new ReadWriteFile();
         try {
@@ -174,13 +167,14 @@ public class ProductManager {
             e.printStackTrace();
         }
     }
-    public void readProductList(ArrayList<Product> products) {
+    public ArrayList<Product> readProductList(String path) {
         ReadWriteFile readWriteFile = new ReadWriteFile();
+        ArrayList<Product> products = null;
         try {
-            readWriteFile.readObjectFile("C:\\Users\\LENOVO\\IdeaProjects\\Case2\\src\\File\\Product.txt");
+            products = readWriteFile.readObjectFile(path);
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+        return products;
     }
-
 }

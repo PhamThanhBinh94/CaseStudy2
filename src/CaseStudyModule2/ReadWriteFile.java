@@ -11,11 +11,9 @@ public class ReadWriteFile {
         Product product;
         try {
             while ((product = (Product) objectInputStream.readObject()) != null){
-                System.out.println(product);
                 products.add(product);
             }
         } catch (EOFException ex){
-            System.out.println("End of file");
         }
         return products;
     }
