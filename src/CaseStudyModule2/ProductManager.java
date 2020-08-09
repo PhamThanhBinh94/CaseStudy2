@@ -9,15 +9,14 @@ import java.util.Comparator;
 import java.util.Scanner;
 
 public class ProductManager {
-//    private ArrayList<Product> products;
     public ProductManager() {
     }
     public void displayProducts(ArrayList<Product> products) {
-        System.out.printf("%-30s%-20s%-20s%-15s\n","Name products","Code products", "Price products ", "Brand products");
-        System.out.printf("------------------------------------------------------------------------------------");
+        System.out.printf("%-30s%-20s%-20s%-15s%-10s\n","Products name","Products code", "Products price ", "Products brand","Products amount");
+        System.out.printf("--------------------------------------------------------------------------------------------------");
         System.out.println();
         for(Product product: products)
-            System.out.printf("%-30s%-20s%-20s%-15s\n",product.getName(),product.getId(),product.getPrice(),product.getBrand());
+            System.out.printf("%-30s%-20s%-20s%-15s%-10s\n",product.getName(),product.getId(),product.getPrice(),product.getBrand(),product.getAmount());
     }
     public static void sortByName(ArrayList<Product> products) {
         Collections.sort(products, new Comparator<Product>() {
@@ -26,7 +25,6 @@ public class ProductManager {
                 return (o1.getName().compareTo(o2.getName()));
             }
         });
-//        System.out.println(products);
     }
     public static void sortPriceFromLowToHigh(ArrayList<Product> products) {
         Collections.sort(products, new Comparator<Product>() {
@@ -39,7 +37,6 @@ public class ProductManager {
                 return -1;
             }
         });
-//        System.out.println(products);
     }
     public static void sortPriceFromHighToLow(ArrayList<Product> products) {
         Collections.sort(products, new Comparator<Product>() {
@@ -52,7 +49,6 @@ public class ProductManager {
                 return 1;
             }
         });
-//        System.out.println(products);
     }
     public static void editProductByName(ArrayList<Product> products){
         boolean isExist =false;
@@ -163,7 +159,6 @@ public class ProductManager {
         String brand = scanner1.next();
         product.setBrand(brand);
         products.add(product);
-//        System.out.println(products);
     }
     public void writeProductList(ArrayList<Product> products) {
         ReadWriteFile readWriteFile = new ReadWriteFile();

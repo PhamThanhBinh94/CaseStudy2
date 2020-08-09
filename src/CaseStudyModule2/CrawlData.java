@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -31,7 +32,8 @@ public class CrawlData {
                 String price = m.group(9).replaceAll("\\.","");
                 price = price.replaceAll(" ","");
                 double priceDouble = Double.parseDouble(price);
-                Product product = new Product(m.group(2),m.group(8),priceDouble,m.group(1));
+                Random random = new Random();
+                Product product = new Product(m.group(2),m.group(8),priceDouble,m.group(1), random.nextInt(35)+5);
                 products.add(product);
                 if (products.size()>=40) break;
             }
