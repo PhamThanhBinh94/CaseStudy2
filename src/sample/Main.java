@@ -6,16 +6,19 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Main extends Application {
+import java.awt.*;
 
+public class Main extends Application {
+    Button button = new Button();
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../View/ProductManager.fxml"));
         primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        Scene scene1 = new Scene(root, 700, 1000);
+        primaryStage.setScene(scene1);
         primaryStage.show();
-    }
 
+    }
 
     public static void main(String[] args) {
         launch(args);

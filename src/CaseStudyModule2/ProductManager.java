@@ -10,17 +10,15 @@ import java.util.Scanner;
 
 public class ProductManager {
 //    private ArrayList<Product> products;
-
     public ProductManager() {
-
     }
-
     public void displayProducts(ArrayList<Product> products) {
+        System.out.printf("%-30s%-20s%-20s%-15s\n","Name products","Code products", "Price products ", "Brand products");
+        System.out.printf("------------------------------------------------------------------------------------");
+        System.out.println();
         for(Product product: products)
-//            product.display();
-            System.out.println(product);
+            System.out.printf("%-30s%-20s%-20s%-15s\n",product.getName(),product.getId(),product.getPrice(),product.getBrand());
     }
-
     public static void sortByName(ArrayList<Product> products) {
         Collections.sort(products, new Comparator<Product>() {
             @Override
@@ -59,10 +57,10 @@ public class ProductManager {
     public static void editProductByName(ArrayList<Product> products){
         boolean isExist =false;
         Scanner scanner2 = new Scanner(System.in);
-        System.out.println("Please enter name that you want to search: ");
-        String name2 = scanner2.nextLine();
+        System.out.println("Please enter id that you want to search: ");
+        String id2 = scanner2.nextLine();;
         for (int i=0; i < products.size(); i++){
-            if (name2.equals(products.get(i).getName())){
+            if (id2.equals(products.get(i).getId())){
                 isExist = true;
                 System.out.println("Please enter new name: ");
                 String name = scanner2.nextLine();
@@ -95,10 +93,10 @@ public class ProductManager {
     public static void editProductByPrice(ArrayList<Product> products){
         boolean isExist =false;
         Scanner scanner2 = new Scanner(System.in);
-        System.out.println("Please enter price that you want to search: ");
-        Double price2 = scanner2.nextDouble();
+        System.out.println("Please enter id that you want to search: ");
+        String id2 = scanner2.nextLine();;
         for (int i=0; i < products.size(); i++){
-            if (price2 == products.get(i).getPrice()){
+            if (id2.equals(products.get(i).getId())){
                 isExist = true;
                 System.out.println("Please enter new price: ");
                 Double price = scanner2.nextDouble();
@@ -113,10 +111,10 @@ public class ProductManager {
     public static void editProductByBrand(ArrayList<Product> products){
         boolean isExist =false;
         Scanner scanner2 = new Scanner(System.in);
-        System.out.println("Please enter brand that you want to search: ");
-        String brand2 = scanner2.nextLine();
+        System.out.println("Please enter id that you want to search: ");
+        String id2 = scanner2.nextLine();
         for (int i=0; i < products.size(); i++){
-            if (brand2.equals(products.get(i).getBrand())){
+            if (id2.equals(products.get(i).getId())){
                 isExist = true;
                 System.out.println("Please enter new brand: ");
                 String brand = scanner2.nextLine();
@@ -128,13 +126,12 @@ public class ProductManager {
             System.out.println("Please enter again!!!");
         }
     }
-
     public static void searchProduct(ArrayList<Product> products) {
         Scanner scanner4 = new Scanner(System.in);
-        System.out.println("Please enter name that you want to search: ");
-        String name4 = scanner4.nextLine();
+        System.out.println("Please enter id that you want to search: ");
+        String id4 = scanner4.nextLine();
         for (Product pro4 : products) {
-            if (pro4.getName().equals(name4)) {
+            if (pro4.getId().equals(id4)) {
                 System.out.println(pro4);
             }
         }
@@ -145,10 +142,10 @@ public class ProductManager {
         String id3 = scanner3.nextLine();
         for (Product pro : products) {
             if (pro.getId().equals(id3)) {
-                products.remove(pro);
+                products.remove(products.indexOf(pro));
+                break;
             }
         }
-        System.out.println(products);
     }
     public void addProduct(ArrayList<Product> products) {
         Product product = new Product();
@@ -166,7 +163,7 @@ public class ProductManager {
         String brand = scanner1.next();
         product.setBrand(brand);
         products.add(product);
-        System.out.println(products);
+//        System.out.println(products);
     }
     public void writeProductList(ArrayList<Product> products) {
         ReadWriteFile readWriteFile = new ReadWriteFile();

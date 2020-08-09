@@ -36,12 +36,8 @@ public class CrawlData {
                 if (products.size()>=40) break;
             }
             productManager.writeProductList(products);
-//            productManager.readProductList(products);
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 }

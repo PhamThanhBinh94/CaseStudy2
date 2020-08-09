@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<fx:root prefHeight="635.0" prefWidth="948.0" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <AnchorPane layoutX="-10.0" prefHeight="130.0" prefWidth="958.0" style="-fx-background-color: #7f0000;">
+         <children>
+            <Label layoutX="27.0" prefHeight="63.0" prefWidth="482.0" text="QUẢN LÝ SẢN PHẨM" textFill="#d7c9c9" textOverrun="CENTER_WORD_ELLIPSIS">
+               <font>
+                  <Font name="Times New Roman" size="44.0" />
+               </font>
+            </Label>
+            <Button fx:id="AddButton1" layoutX="840.0" layoutY="20.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="94.0" style="-fx-background-color: #03a9f4;" text="Quay lại" textAlignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <ButtonBar layoutX="389.0" layoutY="89.0" prefHeight="40.0" prefWidth="149.0" />
+         </children></AnchorPane>
+      <Label layoutX="34.0" layoutY="147.0" prefHeight="21.0" prefWidth="94.0" text="Tên sản phẩm">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="314.0" layoutY="146.0" prefHeight="21.0" prefWidth="94.0" text="Hãng" />
+      <Label layoutX="34.0" layoutY="191.0" prefHeight="21.0" prefWidth="94.0" text="Mã sản phẩm" />
+      <Label layoutX="314.0" layoutY="191.0" prefHeight="21.0" prefWidth="94.0" text="Giá" />
+      <TextField fx:id="ProductNameTextfield" layoutX="128.0" layoutY="145.0" promptText="VD : SONY BRAVIA" />
+      <TextField fx:id="ProductPriceTextField" layoutX="401.0" layoutY="189.0" promptText="VNĐ" />
+      <TextField fx:id="ProductIDTextField" layoutX="128.0" layoutY="189.0" promptText="VD : 001" />
+      <TextField fx:id="ProductBrandTextField" layoutX="400.0" layoutY="145.0" promptText="VD : SONY,LG....." />
+      <Button fx:id="AddButton" layoutX="579.0" layoutY="142.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="66.0" style="-fx-background-color: #03a9f4;" text="Thêm" textAlignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="EditButton" layoutX="656.0" layoutY="142.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="66.0" style="-fx-background-color: #03a9f4;" text="Sửa " textAlignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="DelButton" layoutX="579.0" layoutY="186.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="66.0" style="-fx-background-color: #03a9f4;" text="Xóa" textAlignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="SaveButton" layoutX="656.0" layoutY="186.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="66.0" style="-fx-background-color: #03a9f4;" text="Lưu" textAlignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <TableView fx:id="ProductManagerTableview" layoutX="46.0" layoutY="306.0" prefHeight="287.0" prefWidth="835.0" style="-fx-border-style: 2px;">
+        <columns>
+          <TableColumn prefWidth="206.4000244140625" text="Tên sản phẩm" />
+          <TableColumn prefWidth="204.0" text="Mã sản phẩm" />
+            <TableColumn prefWidth="216.79998779296875" text="Hãng" />
+            <TableColumn prefWidth="215.20001220703125" text="Giá" />
+        </columns>
+      </TableView>
+      <Button fx:id="SearchButton" layoutX="48.0" layoutY="243.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="183.0" style="-fx-background-color: #03a9f4;" text="Tìm kiếm" textAlignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <TextField fx:id="SearchTextField" layoutX="252.0" layoutY="246.0" prefHeight="26.0" prefWidth="326.0" promptText="VD : SONY ULTRA 8K" />
+   </children>
+</fx:root>

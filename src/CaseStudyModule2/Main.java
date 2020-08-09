@@ -1,9 +1,12 @@
 package CaseStudyModule2;
 
+import javafx.application.Application;
+import javafx.stage.Stage;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Main {
+public class Main extends Application {
     public static void main(String[] args) {
         ProductManager productManager = new ProductManager();
         CrawlData crawlData = new CrawlData();
@@ -34,10 +37,10 @@ public class Main {
                     Scanner input2 = new Scanner(System.in);
                     while (choice2 != 0) {
                         System.out.println("Options");
-                        System.out.println("1. Edit products by name");
-                        System.out.println("2. Edit products by id");
-                        System.out.println("3. Edit products by price");
-                        System.out.println("4. Edit products by brand");
+                        System.out.println("1. Edit name products");
+                        System.out.println("2. Edit id products");
+                        System.out.println("3. Edit price products");
+                        System.out.println("4. Edit brand products");
                         System.out.println("0. Back to options");
                         System.out.println("Enter your choice");
                         choice2 = input2.nextInt();
@@ -55,6 +58,8 @@ public class Main {
                             case 4:
                                 productManager.editProductByBrand(products);
                                 break;
+                            case 0:
+                                choice2 =0;break;
                             default:
                                 System.out.println("No choice!");
                         }
@@ -111,5 +116,10 @@ public class Main {
                     System.out.println("No choice!");
             }
         }
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+
     }
 }

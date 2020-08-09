@@ -17,7 +17,6 @@ public class ReadWriteFile {
         }
         return products;
     }
-
     void writeObjectFile(String path, ArrayList<Product> products) throws IOException {
         FileOutputStream fileOutputStream = new FileOutputStream(path);
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);

@@ -1,4 +1,4 @@
-package sample;
+package CaseStudyModule2;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -8,7 +8,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
-public class Controller {
+class Controller {
 
     @FXML
     private ResourceBundle resources;
