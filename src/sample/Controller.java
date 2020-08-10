@@ -1,20 +1,53 @@
 package sample;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import CaseStudyModule2.Product;
+import CaseStudyModule2.ProductManager;
+import com.sun.org.apache.xml.internal.security.Init;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import sun.plugin.dom.html.HTMLBodyElement;
 
-public class Controller {
+public class Controller  implements Initializable {
 
     @FXML
     private ResourceBundle resources;
 
     @FXML
     private URL location;
+
+    @FXML
+    private AnchorPane background;
+
+    @FXML
+    private AnchorPane header;
+
+    @FXML
+    private Label labelQLSP;
+
+    @FXML
+    private Button AddButton1;
 
     @FXML
     private TextField ProductNameTextfield;
@@ -29,6 +62,9 @@ public class Controller {
     private TextField ProductBrandTextField;
 
     @FXML
+    private TextField ProductAmountTextField;
+
+    @FXML
     private Button AddButton;
 
     @FXML
@@ -41,7 +77,22 @@ public class Controller {
     private Button SaveButton;
 
     @FXML
-    private TableView<?> ProductManagerTableview;
+    private TableView<Product> ProductManagerTableview;
+
+    @FXML
+    private TableColumn<Product, String> nameProductColumn;
+
+    @FXML
+    private TableColumn<Product, String> idProductColumn;
+
+    @FXML
+    private TableColumn<Product, String> brandProductColumn;
+
+    @FXML
+    private TableColumn<Product, Double> priceProductColumn;
+
+    @FXML
+    private TableColumn<Product, Integer> amountProductColumn;
 
     @FXML
     private Button SearchButton;
@@ -49,24 +100,118 @@ public class Controller {
     @FXML
     private TextField SearchTextField;
 
-    @FXML
-    void backToMain(MouseEvent event) {
+    private ObservableList<Product> products;
 
+    private ArrayList<Product> listProduct = new ArrayList<>();
+    private ProductManager productManager = new ProductManager();
+    private final String path = "C:\\Users\\LENOVO\\IdeaProjects\\Case2\\src\\File\\Product.txt";
+
+//    @FXML
+//    void initialize() {
+//        assert background != null : "fx:id=\"background\" was not injected: check your FXML file 'QLSP.fxml'.";
+//        assert header != null : "fx:id=\"header\" was not injected: check your FXML file 'QLSP.fxml'.";
+//        assert labelQLSP != null : "fx:id=\"labelQLSP\" was not injected: check your FXML file 'QLSP.fxml'.";
+//        assert AddButton1 != null : "fx:id=\"AddButton1\" was not injected: check your FXML file 'QLSP.fxml'.";
+//        assert ProductNameTextfield != null : "fx:id=\"ProductNameTextfield\" was not injected: check your FXML file 'QLSP.fxml'.";
+//        assert ProductPriceTextField != null : "fx:id=\"ProductPriceTextField\" was not injected: check your FXML file 'QLSP.fxml'.";
+//        assert ProductIDTextField != null : "fx:id=\"ProductIDTextField\" was not injected: check your FXML file 'QLSP.fxml'.";
+//        assert ProductBrandTextField != null : "fx:id=\"ProductBrandTextField\" was not injected: check your FXML file 'QLSP.fxml'.";
+//        assert AddButton != null : "fx:id=\"AddButton\" was not injected: check your FXML file 'QLSP.fxml'.";
+//        assert EditButton != null : "fx:id=\"EditButton\" was not injected: check your FXML file 'QLSP.fxml'.";
+//        assert DelButton != null : "fx:id=\"DelButton\" was not injected: check your FXML file 'QLSP.fxml'.";
+//        assert SaveButton != null : "fx:id=\"SaveButton\" was not injected: check your FXML file 'QLSP.fxml'.";
+//        assert ProductManagerTableview != null : "fx:id=\"ProductManagerTableview\" was not injected: check your FXML file 'QLSP.fxml'.";
+//        assert nameProductColumn != null : "fx:id=\"nameProductColumn\" was not injected: check your FXML file 'QLSP.fxml'.";
+//        assert idProductColumn != null : "fx:id=\"idProductColumn\" was not injected: check your FXML file 'QLSP.fxml'.";
+//        assert brandProductColumn != null : "fx:id=\"brandProductColumn\" was not injected: check your FXML file 'QLSP.fxml'.";
+//        assert priceProductColumn != null : "fx:id=\"priceProductColumn\" was not injected: check your FXML file 'QLSP.fxml'.";
+//        assert SearchButton != null : "fx:id=\"SearchButton\" was not injected: check your FXML file 'QLSP.fxml'.";
+//        assert SearchTextField != null : "fx:id=\"SearchTextField\" was not injected: check your FXML file 'QLSP.fxml'.";
+//
+//    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        listProduct = productManager.readProductList(path);
+        products = FXCollections.observableArrayList(listProduct);
+
+        nameProductColumn.setCellValueFactory(new PropertyValueFactory<Product ,String >("name"));
+        idProductColumn.setCellValueFactory(new PropertyValueFactory<Product ,String >("id"));
+        brandProductColumn.setCellValueFactory(new PropertyValueFactory<Product ,String >("brand"));
+        priceProductColumn.setCellValueFactory(new PropertyValueFactory<Product ,Double >("price"));
+        amountProductColumn.setCellValueFactory(new PropertyValueFactory<Product ,Integer >("amount"));
+        ProductManagerTableview.setItems(products);
     }
 
-    @FXML
-    void initialize() {
-        assert ProductNameTextfield != null : "fx:id=\"ProductNameTextfield\" was not injected: check your FXML file 'QLSP.fxml'.";
-        assert ProductPriceTextField != null : "fx:id=\"ProductPriceTextField\" was not injected: check your FXML file 'QLSP.fxml'.";
-        assert ProductIDTextField != null : "fx:id=\"ProductIDTextField\" was not injected: check your FXML file 'QLSP.fxml'.";
-        assert ProductBrandTextField != null : "fx:id=\"ProductBrandTextField\" was not injected: check your FXML file 'QLSP.fxml'.";
-        assert AddButton != null : "fx:id=\"AddButton\" was not injected: check your FXML file 'QLSP.fxml'.";
-        assert EditButton != null : "fx:id=\"EditButton\" was not injected: check your FXML file 'QLSP.fxml'.";
-        assert DelButton != null : "fx:id=\"DelButton\" was not injected: check your FXML file 'QLSP.fxml'.";
-        assert SaveButton != null : "fx:id=\"SaveButton\" was not injected: check your FXML file 'QLSP.fxml'.";
-        assert ProductManagerTableview != null : "fx:id=\"ProductManagerTableview\" was not injected: check your FXML file 'QLSP.fxml'.";
-        assert SearchButton != null : "fx:id=\"SearchButton\" was not injected: check your FXML file 'QLSP.fxml'.";
-        assert SearchTextField != null : "fx:id=\"SearchTextField\" was not injected: check your FXML file 'QLSP.fxml'.";
+    public void addProduct(MouseEvent mouseEvent) {
+        String name = ProductNameTextfield.getText();
+        String id = ProductIDTextField.getText();
+        String brand = ProductBrandTextField.getText();
+        String price = ProductPriceTextField.getText();
+        String amount = ProductAmountTextField.getText();
+        Product product = new Product(name,id,Double.parseDouble(price),brand,Integer.parseInt(amount));
 
+        listProduct.add(product);
+        products = FXCollections.observableArrayList(listProduct);
+        ProductManagerTableview.setItems(products);
+    }
+
+    public void deleteProduct(MouseEvent mouseEvent) {
+        Product product = ProductManagerTableview.getSelectionModel().getSelectedItem();
+        listProduct.remove(product);
+        products = FXCollections.observableArrayList(listProduct);
+        ProductManagerTableview.setItems(products);
+    }
+
+    public void saveToFile(MouseEvent mouseEvent) {
+        productManager.writeProductList(listProduct);
+    }
+
+    public void editProduct(MouseEvent mouseEvent) {
+        Product product = ProductManagerTableview.getSelectionModel().getSelectedItem();
+        ProductNameTextfield.setText(product.getName());
+        ProductIDTextField.setText(product.getId());
+        ProductBrandTextField.setText(product.getBrand());
+        ProductPriceTextField.setText(String.valueOf(product.getPrice()));
+    }
+
+    public void backToMain(MouseEvent mouseEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../View/ProductManager.fxml"));
+
+        Stage primaryStage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+//    public void changeName(InputMethodEvent inputMethodEvent) {
+//        String name = ProductNameTextfield.getText();
+//        Product product = ProductManagerTableview.getSelectionModel().getSelectedItem();
+//        product.setName(name);
+//        products = FXCollections.observableArrayList(listProduct);
+//        ProductManagerTableview.setItems(products);
+//    }
+//
+//    public void changeID(InputMethodEvent inputMethodEvent) {
+//
+//    }
+
+
+
+    public void searchProduct(MouseEvent mouseEvent) {
+        String id = SearchTextField.getText();
+
+        for (Product product: listProduct){
+            if (id.equals(product.getId())){
+                products = FXCollections.observableArrayList(product);
+                ProductManagerTableview.setItems(products);
+            }
+        }
+    }
+
+    public void startSearch(MouseEvent mouseEvent) {
+        listProduct = productManager.readProductList(path);
+        products = FXCollections.observableArrayList(listProduct);
+        ProductManagerTableview.setItems(products);
     }
 }

@@ -7,28 +7,28 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller1">
+<AnchorPane fx:id="khungduoi" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller1">
    <children>
-      <AnchorPane prefHeight="170.0" prefWidth="800.0" style="-fx-background-color: #7f0000;">
+      <AnchorPane fx:id="khungtren" prefHeight="170.0" prefWidth="800.0" style="-fx-background-color: #7f0000;">
          <children>
-            <Label layoutX="30.0" layoutY="8.0" prefHeight="86.0" prefWidth="509.0" text="QUẢN LÝ SẢN PHẨM" textFill="#dfd2d2">
+            <Label fx:id="qlsp" layoutX="30.0" layoutY="8.0" prefHeight="86.0" prefWidth="509.0" text="QUẢN LÝ SẢN PHẨM" textFill="#dfd2d2">
                <font>
                   <Font size="50.0" />
                </font>
             </Label>
-            <Label layoutX="263.0" layoutY="120.0" prefHeight="36.0" prefWidth="274.0" text="Trình đăng nhập quản lý" textAlignment="CENTER" textFill="#eddfdf">
+            <Label fx:id="tendangnhap" layoutX="263.0" layoutY="120.0" prefHeight="36.0" prefWidth="274.0" text="Trình đăng nhập quản lý" textAlignment="CENTER" textFill="#eddfdf">
                <font>
                   <Font size="25.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutY="577.0" prefHeight="23.0" prefWidth="800.0" style="-fx-background-color: #7f0000;" />
-      <TextField layoutX="227.0" layoutY="239.0" prefHeight="38.0" prefWidth="330.0" promptText="VD : Admin" />
-      <TextField layoutX="227.0" layoutY="320.0" prefHeight="38.0" prefWidth="330.0" promptText="VD : 123456" />
+      <AnchorPane fx:id="vienduoi" layoutY="577.0" prefHeight="23.0" prefWidth="800.0" style="-fx-background-color: #7f0000;" />
+      <TextField fx:id="getUsername" layoutX="227.0" layoutY="239.0" prefHeight="38.0" prefWidth="330.0" promptText="VD : Admin" />
+      <TextField fx:id="getPass" layoutX="227.0" layoutY="320.0" prefHeight="38.0" prefWidth="330.0" promptText="VD : 123456" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-      <Label layoutX="89.0" layoutY="239.0" prefHeight="38.0" prefWidth="110.0" text="Tên đăng nhập" />
-      <Label layoutX="89.0" layoutY="320.0" prefHeight="38.0" prefWidth="110.0" text="Mật khẩu" />
-      <Button layoutX="227.0" layoutY="405.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="330.0" style="-fx-background-color: #7f0000;" text="Đăng nhập" textFill="WHITE" />
+      <Label fx:id="userName" layoutX="89.0" layoutY="239.0" prefHeight="38.0" prefWidth="110.0" text="Tên đăng nhập" />
+      <Label fx:id="password" layoutX="89.0" layoutY="320.0" prefHeight="38.0" prefWidth="110.0" text="Mật khẩu" />
+      <Button fx:id="loginButton" layoutX="227.0" layoutY="405.0" mnemonicParsing="false" onMouseClicked="#loginAdmin" prefHeight="26.0" prefWidth="330.0" style="-fx-background-color: #7f0000;" text="Đăng nhập" textFill="WHITE" />
    </children>
 </AnchorPane>

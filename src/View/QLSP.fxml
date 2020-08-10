@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<fx:root prefHeight="635.0" prefWidth="948.0" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane fx:id="background" prefHeight="635.0" prefWidth="948.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <AnchorPane layoutX="-10.0" prefHeight="130.0" prefWidth="958.0" style="-fx-background-color: #7f0000;">
+      <AnchorPane fx:id="header" layoutX="-10.0" prefHeight="130.0" prefWidth="958.0" style="-fx-background-color: #7f0000;">
          <children>
-            <Label layoutX="27.0" prefHeight="63.0" prefWidth="482.0" text="QUẢN LÝ SẢN PHẨM" textFill="#d7c9c9" textOverrun="CENTER_WORD_ELLIPSIS">
+            <Label fx:id="labelQLSP" layoutX="27.0" prefHeight="63.0" prefWidth="482.0" text="QUẢN LÝ SẢN PHẨM" textFill="#d7c9c9" textOverrun="CENTER_WORD_ELLIPSIS">
                <font>
                   <Font name="Times New Roman" size="44.0" />
                </font>
             </Label>
-            <Button fx:id="AddButton1" layoutX="840.0" layoutY="20.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="94.0" style="-fx-background-color: #03a9f4;" text="Quay lại" textAlignment="CENTER">
+            <Button fx:id="AddButton1" layoutX="840.0" layoutY="20.0" mnemonicParsing="false" onMouseClicked="#backToMain" prefHeight="30.0" prefWidth="94.0" style="-fx-background-color: #03a9f4;" text="Quay lại" textAlignment="CENTER">
                <font>
                   <Font size="14.0" />
                </font>
@@ -33,43 +28,50 @@
       <Label layoutX="314.0" layoutY="146.0" prefHeight="21.0" prefWidth="94.0" text="Hãng" />
       <Label layoutX="34.0" layoutY="191.0" prefHeight="21.0" prefWidth="94.0" text="Mã sản phẩm" />
       <Label layoutX="314.0" layoutY="191.0" prefHeight="21.0" prefWidth="94.0" text="Giá" />
-      <TextField fx:id="ProductNameTextfield" layoutX="128.0" layoutY="145.0" promptText="VD : SONY BRAVIA" />
-      <TextField fx:id="ProductPriceTextField" layoutX="401.0" layoutY="189.0" promptText="VNĐ" />
-      <TextField fx:id="ProductIDTextField" layoutX="128.0" layoutY="189.0" promptText="VD : 001" />
-      <TextField fx:id="ProductBrandTextField" layoutX="400.0" layoutY="145.0" promptText="VD : SONY,LG....." />
-      <Button fx:id="AddButton" layoutX="579.0" layoutY="142.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="66.0" style="-fx-background-color: #03a9f4;" text="Thêm" textAlignment="CENTER">
+      <TextField fx:id="ProductNameTextfield" layoutX="140.0" layoutY="143.0"  prefHeight="26.0" prefWidth="149.0" promptText="VD : SONY BRAVIA" />
+      <TextField fx:id="ProductPriceTextField" layoutX="361.0" layoutY="189.0" promptText="VNĐ" />
+      <TextField fx:id="ProductIDTextField" layoutX="140.0" layoutY="189.0"  prefHeight="26.0" prefWidth="149.0" promptText="VD : 001" />
+      <TextField fx:id="ProductBrandTextField" layoutX="361.0" layoutY="145.0" promptText="VD : SONY,LG....." />
+      <Button fx:id="AddButton" layoutX="760.0" layoutY="141.0" mnemonicParsing="false" onMouseClicked="#addProduct" prefHeight="30.0" prefWidth="66.0" style="-fx-background-color: #03a9f4;" text="Thêm" textAlignment="CENTER">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="EditButton" layoutX="656.0" layoutY="142.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="66.0" style="-fx-background-color: #03a9f4;" text="Sửa " textAlignment="CENTER">
+      <Button fx:id="EditButton" layoutX="858.0" layoutY="142.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="66.0" style="-fx-background-color: #03a9f4;" text="Sửa " textAlignment="CENTER">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="DelButton" layoutX="579.0" layoutY="186.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="66.0" style="-fx-background-color: #03a9f4;" text="Xóa" textAlignment="CENTER">
+      <Button fx:id="DelButton" layoutX="760.0" layoutY="186.0" mnemonicParsing="false" onMouseClicked="#deleteProduct" prefHeight="22.0" prefWidth="66.0" style="-fx-background-color: #03a9f4;" text="Xóa" textAlignment="CENTER">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="SaveButton" layoutX="656.0" layoutY="186.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="66.0" style="-fx-background-color: #03a9f4;" text="Lưu" textAlignment="CENTER">
+      <Button fx:id="SaveButton" layoutX="858.0" layoutY="186.0" mnemonicParsing="false" onMouseClicked="#saveToFile" prefHeight="30.0" prefWidth="66.0" style="-fx-background-color: #03a9f4;" text="Lưu" textAlignment="CENTER">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
       <TableView fx:id="ProductManagerTableview" layoutX="46.0" layoutY="306.0" prefHeight="287.0" prefWidth="835.0" style="-fx-border-style: 2px;">
         <columns>
-          <TableColumn prefWidth="206.4000244140625" text="Tên sản phẩm" />
-          <TableColumn prefWidth="204.0" text="Mã sản phẩm" />
-            <TableColumn prefWidth="216.79998779296875" text="Hãng" />
-            <TableColumn prefWidth="215.20001220703125" text="Giá" />
+          <TableColumn fx:id="nameProductColumn" prefWidth="218.79999160766602" text="Tên sản phẩm" />
+          <TableColumn fx:id="idProductColumn" prefWidth="162.79998779296875" text="Mã sản phẩm" />
+            <TableColumn fx:id="brandProductColumn" minWidth="0.0" prefWidth="161.79998779296875" text="Hãng" />
+            <TableColumn fx:id="priceProductColumn" minWidth="0.0" prefWidth="163.20001220703125" text="Giá" />
+            <TableColumn fx:id="amountProductColumn" minWidth="0.0" prefWidth="137.0" text="Số lượng" />
         </columns>
       </TableView>
-      <Button fx:id="SearchButton" layoutX="48.0" layoutY="243.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="183.0" style="-fx-background-color: #03a9f4;" text="Tìm kiếm" textAlignment="CENTER">
+      <Button fx:id="SearchButton" layoutX="48.0" layoutY="243.0" mnemonicParsing="false" onMouseClicked="#searchProduct" prefHeight="30.0" prefWidth="183.0" style="-fx-background-color: #03a9f4;" text="Tìm kiếm" textAlignment="CENTER">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <TextField fx:id="SearchTextField" layoutX="252.0" layoutY="246.0" prefHeight="26.0" prefWidth="326.0" promptText="VD : SONY ULTRA 8K" />
+      <TextField fx:id="SearchTextField" layoutX="252.0" layoutY="246.0" onMouseClicked="#startSearch" prefHeight="26.0" prefWidth="326.0" promptText="VD : SONY ULTRA 8K" />
+      <TextField fx:id="ProductAmountTextField" layoutX="647.0" layoutY="145.0" prefHeight="26.0" prefWidth="77.0" promptText="VD : 5,10,15" />
+      <Label layoutX="564.0" layoutY="147.0" prefHeight="21.0" prefWidth="94.0" text="Số lượng">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
    </children>
-</fx:root>
+</AnchorPane>
