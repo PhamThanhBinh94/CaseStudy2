@@ -72,16 +72,16 @@ public class Controller1 {
 
     @FXML
     void initialize() {
-        assert khungduoi != null : "fx:id=\"khungduoi\" was not injected: check your FXML file 'ProductManager.fxml'.";
-        assert khungtren != null : "fx:id=\"khungtren\" was not injected: check your FXML file 'ProductManager.fxml'.";
-        assert qlsp != null : "fx:id=\"qlsp\" was not injected: check your FXML file 'ProductManager.fxml'.";
-        assert tendangnhap != null : "fx:id=\"tendangnhap\" was not injected: check your FXML file 'ProductManager.fxml'.";
-        assert vienduoi != null : "fx:id=\"vienduoi\" was not injected: check your FXML file 'ProductManager.fxml'.";
-        assert getUsername != null : "fx:id=\"getUsername\" was not injected: check your FXML file 'ProductManager.fxml'.";
-        assert getPass != null : "fx:id=\"getPass\" was not injected: check your FXML file 'ProductManager.fxml'.";
-        assert userName != null : "fx:id=\"userName\" was not injected: check your FXML file 'ProductManager.fxml'.";
-        assert password != null : "fx:id=\"password\" was not injected: check your FXML file 'ProductManager.fxml'.";
-        assert loginButton != null : "fx:id=\"loginButton\" was not injected: check your FXML file 'ProductManager.fxml'.";
+        assert khungduoi != null : "fx:id=\"khungduoi\" was not injected: check your FXML file 'Login.fxml'.";
+        assert khungtren != null : "fx:id=\"khungtren\" was not injected: check your FXML file 'Login.fxml'.";
+        assert qlsp != null : "fx:id=\"qlsp\" was not injected: check your FXML file 'Login.fxml'.";
+        assert tendangnhap != null : "fx:id=\"tendangnhap\" was not injected: check your FXML file 'Login.fxml'.";
+        assert vienduoi != null : "fx:id=\"vienduoi\" was not injected: check your FXML file 'Login.fxml'.";
+        assert getUsername != null : "fx:id=\"getUsername\" was not injected: check your FXML file 'Login.fxml'.";
+        assert getPass != null : "fx:id=\"getPass\" was not injected: check your FXML file 'Login.fxml'.";
+        assert userName != null : "fx:id=\"userName\" was not injected: check your FXML file 'Login.fxml'.";
+        assert password != null : "fx:id=\"password\" was not injected: check your FXML file 'Login.fxml'.";
+        assert loginButton != null : "fx:id=\"loginButton\" was not injected: check your FXML file 'Login.fxml'.";
 
     }
 }

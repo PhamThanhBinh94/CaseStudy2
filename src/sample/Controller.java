@@ -7,7 +7,6 @@ import java.util.ResourceBundle;
 
 import CaseStudyModule2.Product;
 import CaseStudyModule2.ProductManager;
-import com.sun.org.apache.xml.internal.security.Init;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,12 +18,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.input.InputMethodEvent;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import sun.plugin.dom.html.HTMLBodyElement;
 
 public class Controller  implements Initializable {
 
@@ -142,16 +138,36 @@ public class Controller  implements Initializable {
         amountProductColumn.setCellValueFactory(new PropertyValueFactory<Product ,Integer >("amount"));
 //        amountProductColumn.setCellFactory(TextFieldTableCell.<Product>forTableColumn());
 
-//        nameProductColumn.setOnEditCommit((TableColumn.CellEditEvent<Product, String> event)-> {
-//            TablePosition<Product, String> pos = event.getTablePosition();
-//
-//            String newProductName = event.getNewValue();
-//
-//            int row = pos.getRow();
-//            Product product = event.getTableView().getItems().get(row);
-//
-//            product.setName(newProductName);
-//        });
+        nameProductColumn.setOnEditCommit((TableColumn.CellEditEvent<Product, String> event)-> {
+            TablePosition<Product, String> pos = event.getTablePosition();
+
+            String newProductName = event.getNewValue();
+
+            int row = pos.getRow();
+            Product product = event.getTableView().getItems().get(row);
+
+            product.setName(newProductName);
+        });
+        idProductColumn.setOnEditCommit((TableColumn.CellEditEvent<Product, String> event)-> {
+            TablePosition<Product, String> pos = event.getTablePosition();
+
+            String newProductId = event.getNewValue();
+
+            int row = pos.getRow();
+            Product product = event.getTableView().getItems().get(row);
+
+            product.setId(newProductId);
+        });
+        brandProductColumn.setOnEditCommit((TableColumn.CellEditEvent<Product, String> event)-> {
+            TablePosition<Product, String> pos = event.getTablePosition();
+
+            String newProductBrand = event.getNewValue();
+
+            int row = pos.getRow();
+            Product product = event.getTableView().getItems().get(row);
+
+            product.setBrand(newProductBrand);
+        });
 
         listProduct = productManager.readProductList(path);
         products = FXCollections.observableArrayList(listProduct);
@@ -192,27 +208,13 @@ public class Controller  implements Initializable {
     }
 
     public void backToMain(MouseEvent mouseEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../View/ProductManager.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../View/Login.fxml"));
 
         Stage primaryStage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-
-//    public void changeName(InputMethodEvent inputMethodEvent) {
-//        String name = ProductNameTextfield.getText();
-//        Product product = ProductManagerTableview.getSelectionModel().getSelectedItem();
-//        product.setName(name);
-//        products = FXCollections.observableArrayList(listProduct);
-//        ProductManagerTableview.setItems(products);
-//    }
-//
-//    public void changeID(InputMethodEvent inputMethodEvent) {
-//
-//    }
-
-
 
     public void searchProduct(MouseEvent mouseEvent) {
         String id = SearchTextField.getText();
