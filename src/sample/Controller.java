@@ -199,14 +199,6 @@ public class Controller  implements Initializable {
         productManager.writeProductList(listProduct);
     }
 
-    public void editProduct(MouseEvent mouseEvent) {
-        Product product = ProductManagerTableview.getSelectionModel().getSelectedItem();
-        ProductNameTextfield.setText(product.getName());
-        ProductIDTextField.setText(product.getId());
-        ProductBrandTextField.setText(product.getBrand());
-        ProductPriceTextField.setText(String.valueOf(product.getPrice()));
-    }
-
     public void backToMain(MouseEvent mouseEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../View/Login.fxml"));
 
