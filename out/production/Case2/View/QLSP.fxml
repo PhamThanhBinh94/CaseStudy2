@@ -28,9 +28,9 @@
       <Label layoutX="314.0" layoutY="146.0" prefHeight="21.0" prefWidth="94.0" text="Hãng" />
       <Label layoutX="34.0" layoutY="191.0" prefHeight="21.0" prefWidth="94.0" text="Mã sản phẩm" />
       <Label layoutX="314.0" layoutY="191.0" prefHeight="21.0" prefWidth="94.0" text="Giá" />
-      <TextField fx:id="ProductNameTextfield" layoutX="140.0" layoutY="143.0" onInputMethodTextChanged="#changeName" prefHeight="26.0" prefWidth="149.0" promptText="VD : SONY BRAVIA" />
+      <TextField fx:id="ProductNameTextfield" layoutX="140.0" layoutY="143.0"  prefHeight="26.0" prefWidth="149.0" promptText="VD : SONY BRAVIA" />
       <TextField fx:id="ProductPriceTextField" layoutX="361.0" layoutY="189.0" promptText="VNĐ" />
-      <TextField fx:id="ProductIDTextField" layoutX="140.0" layoutY="189.0" onInputMethodTextChanged="#changeID" prefHeight="26.0" prefWidth="149.0" promptText="VD : 001" />
+      <TextField fx:id="ProductIDTextField" layoutX="140.0" layoutY="189.0"  prefHeight="26.0" prefWidth="149.0" promptText="VD : 001" />
       <TextField fx:id="ProductBrandTextField" layoutX="361.0" layoutY="145.0" promptText="VD : SONY,LG....." />
       <Button fx:id="AddButton" layoutX="760.0" layoutY="141.0" mnemonicParsing="false" onMouseClicked="#addProduct" prefHeight="30.0" prefWidth="66.0" style="-fx-background-color: #03a9f4;" text="Thêm" textAlignment="CENTER">
          <font>

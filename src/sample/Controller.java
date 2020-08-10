@@ -16,12 +16,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -132,15 +129,34 @@ public class Controller  implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        listProduct = productManager.readProductList(path);
-        products = FXCollections.observableArrayList(listProduct);
+        ProductManagerTableview.setEditable(true);
 
         nameProductColumn.setCellValueFactory(new PropertyValueFactory<Product ,String >("name"));
+        nameProductColumn.setCellFactory(TextFieldTableCell.<Product>forTableColumn());
         idProductColumn.setCellValueFactory(new PropertyValueFactory<Product ,String >("id"));
+        idProductColumn.setCellFactory(TextFieldTableCell.<Product>forTableColumn());
         brandProductColumn.setCellValueFactory(new PropertyValueFactory<Product ,String >("brand"));
+        brandProductColumn.setCellFactory(TextFieldTableCell.<Product>forTableColumn());
         priceProductColumn.setCellValueFactory(new PropertyValueFactory<Product ,Double >("price"));
+//        priceProductColumn.setCellFactory(TextFieldTableCell.<Product>forTableColumn());
         amountProductColumn.setCellValueFactory(new PropertyValueFactory<Product ,Integer >("amount"));
+//        amountProductColumn.setCellFactory(TextFieldTableCell.<Product>forTableColumn());
+
+//        nameProductColumn.setOnEditCommit((TableColumn.CellEditEvent<Product, String> event)-> {
+//            TablePosition<Product, String> pos = event.getTablePosition();
+//
+//            String newProductName = event.getNewValue();
+//
+//            int row = pos.getRow();
+//            Product product = event.getTableView().getItems().get(row);
+//
+//            product.setName(newProductName);
+//        });
+
+        listProduct = productManager.readProductList(path);
+        products = FXCollections.observableArrayList(listProduct);
         ProductManagerTableview.setItems(products);
+        ProductManagerTableview.getColumns().addAll(nameProductColumn,idProductColumn,brandProductColumn,priceProductColumn,amountProductColumn);
     }
 
     public void addProduct(MouseEvent mouseEvent) {
